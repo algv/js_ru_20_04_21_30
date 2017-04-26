@@ -4,6 +4,7 @@ import CommentList from './CommentList'
 export default class Article extends Component {
     state = {
         isOpen: false,
+        //лучше внести этот стейт в CommentList, иначе компонент выходит очень прегруженным
         commentsOpen: false
     }
 
@@ -25,6 +26,7 @@ export default class Article extends Component {
         (<div>
             {this.props.article.text}
             <p />
+            {/*не пиши много кода внутри JSX, очень быстро становится нечитабельным*/}
             {this.state.commentsOpen
                 ? <a onClick={this.toggleComments}>
                     <b> hide comments </b>
