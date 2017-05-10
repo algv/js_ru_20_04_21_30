@@ -13,10 +13,13 @@ class Article extends Component {
 */
     static propTypes = {
         article: PropTypes.shape({
+            id: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
-            text: PropTypes.string,
+            text: PropTypes.string.isRequired,
             comments: PropTypes.array
-        }).isRequired
+        }).isRequired,
+        toggleOpen: PropTypes.func.isRequired
     }
 
     componentDidMount() {
