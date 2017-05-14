@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Comment from './Comment'
+import CommentForm from './CommentForm/CommentForm'
 import toggleOpen from '../decorators/toggleOpen'
 import PropTypes from 'prop-types'
 
@@ -22,6 +23,7 @@ function getBody(props) {
     return (
         <ul>
             {comments.map(comment => <li key={comment.id}><Comment comment={comment}/></li>)}
+            <CommentForm />
         </ul>
     )
 }
