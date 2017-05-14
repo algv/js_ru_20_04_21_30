@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class CommentForm extends Component {
+export default class CommentForm extends Component {
     static propTypes = {
 
     };
