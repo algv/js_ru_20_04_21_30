@@ -4,7 +4,7 @@ import Chart from './Chart'
 import UserForm from './UserForm'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
-import DayPicker from "react-day-picker";
+import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css"
 
 class App extends Component {
@@ -14,7 +14,8 @@ class App extends Component {
 
     state = {
         counter: 0,
-        selection: null
+        selection: null,
+        selectedDays: [],
     }
 
     render() {
@@ -25,14 +26,13 @@ class App extends Component {
         return (
             <div>
                 <UserForm />
-                <a href="#" onClick = {this.updateCounter}>update chart</a>
-                <Select options = {options} value = {this.state.selection}
-                        onChange = {this.handleSelectionChange} multi />
-                <ArticleList articles = {this.props.articles} />
+                <a href="#" onClick={this.updateCounter}>update chart</a>
+                <Select options={options} value={this.state.selection}
+                    onChange={this.handleSelectionChange} multi />
+                <ArticleList articles={this.props.articles} />
                 <Chart articles={this.props.articles} key={this.state.counter} />
                 <DayPicker
-                    disabledDays={{ daysOfWeek: [0] }}
-                    selectedDays={this.state.selectedDay}
+                    selectedDays={this.state.selectedDays}
                     onDayClick={this.handleDayClick}
                 />
             </div>
@@ -47,6 +47,19 @@ class App extends Component {
     }
 
     handleSelectionChange = selection => this.setState({ selection })
+
+    handleDayClick = (day, { selected }) => {
+        const { selectedDays } = this.state
+        if (selected) {
+            const selectedIndex = selectedDays.findIndex(selectedDay =>
+                DateUtils.isSameDay(selectedDay, day)
+            )
+            selectedDays.splice(selectedIndex, 1)
+        } else {
+            selectedDays.push(day)
+        }
+        this.setState({ selectedDays })
+    };
 }
 
 export default App
