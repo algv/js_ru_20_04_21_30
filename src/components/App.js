@@ -4,6 +4,8 @@ import Chart from './Chart'
 import UserForm from './UserForm'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css"
 
 class App extends Component {
     static propTypes = {
@@ -28,6 +30,11 @@ class App extends Component {
                         onChange = {this.handleSelectionChange} multi />
                 <ArticleList articles = {this.props.articles} />
                 <Chart articles={this.props.articles} key={this.state.counter} />
+                <DayPicker
+                    disabledDays={{ daysOfWeek: [0] }}
+                    selectedDays={this.state.selectedDay}
+                    onDayClick={this.handleDayClick}
+                />
             </div>
         )
     }
