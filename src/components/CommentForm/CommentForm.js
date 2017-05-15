@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+//отлично, только я просил в css файле сделать, а не инлайн стилями
 export default class CommentForm extends Component {
     static propTypes = {
 
