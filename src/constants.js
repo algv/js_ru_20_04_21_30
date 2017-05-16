@@ -1,3 +1,5 @@
 export const INCREMENT = 'INCREMENT'
 
 export const DELETE_ARTICLE = 'DELETE_ARTICLE'
+
+export const ADD_DAY_TO_RANGE = 'ADD_DAY_TO_RANGE'
