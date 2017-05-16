@@ -1,4 +1,4 @@
-import {ADD_DAY_TO_RANGE, INCREMENT, DELETE_ARTICLE} from '../constants'
+import {ADD_DAY_TO_RANGE, INCREMENT, DELETE_ARTICLE, SELECTION} from '../constants'
 
 export function increment() {
     const action = {
@@ -18,5 +18,12 @@ export function addDayToRange(day) {
     return {
         type: ADD_DAY_TO_RANGE,
         payload: { day }
+    }
+}
+
+export function selectFilter(select) {
+    return {
+        type: SELECTION,
+        payload: { select }
     }
 }
