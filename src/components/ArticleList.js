@@ -36,7 +36,7 @@ class ArticleList extends Component {
 
         if (selections.length == 0 && range.from == null) return articles
 
-        return articles.filter(article => moment(article.date).isBetween(FROM, TO) && selections.some((element) => {
+        return articles.filter(article => moment(article.date).isBetween(FROM, TO) || selections.some((element) => {
             return article.id == element.value;
         }))
     }
