@@ -29,6 +29,7 @@ class ArticleList extends Component {
         )
     }
 
+        //ок, но еще лучше делать фильтрацию в коннекте
     filteredArticles = () => {
         const { range, selections, articles } = this.props
         const FROM = moment(range.from).format('MM/DD/YYYY');
