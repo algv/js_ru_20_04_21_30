@@ -64,7 +64,7 @@ class Article extends Component {
         return this.props.isOpen && (
             <div>
                 {this.props.article.text}
-                <CommentList comments={this.props.article.comments}/>
+                <CommentList comments={this.props.article.comments} articleID={this.props.article.id}/>
             </div>
         )
     }

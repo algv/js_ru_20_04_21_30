@@ -15,11 +15,11 @@ class ArticleList extends Component {
     render() {
         console.log('---', 'rendering ArticleList')
         const {articles, toggleOpenItem, isItemOpened} = this.props
-        const elements = articles.map(article => <li key={article.id}>
-            <Article article = {article}
-                     isOpen = {isItemOpened(article.id)}
-                     toggleOpen = {toggleOpenItem(article.id)}
-                     ref = {article.id}
+        const elements = Object.keys(articles).map(id => <li key={id}>
+            <Article article = {articles[id]}
+                     isOpen = {isItemOpened(id)}
+                     toggleOpen = {toggleOpenItem(id)}
+                     ref = {id}
             />
         </li>)
         return (
@@ -31,7 +31,7 @@ class ArticleList extends Component {
 }
 
 ArticleList.propTypes = {
-    articles: PropTypes.array,
+    articles: PropTypes.object,
     //from accordion decorator
     toggleOpenItem: PropTypes.func.isRequired,
     isItemOpened: PropTypes.func.isRequired

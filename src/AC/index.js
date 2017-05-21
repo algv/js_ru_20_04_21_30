@@ -28,9 +28,9 @@ export function changeSelection(selected) {
     }
 }
 
-export function addComment(id, user, text) {
+export function addComment(id, user, text, articleID) {
     return {
         type: ADD_COMMENT,
-        payload: { id, user, text }
+        payload: { id, user, text, articleID }
     }
 }
