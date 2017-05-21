@@ -10,11 +10,16 @@ export const filtratedArticlesSelector = createSelector(articlesGetter, filtersG
 
     const {selected, dateRange: {from, to}} = filters
 
-    return articles.filter(article => {
-        const published = Date.parse(article.date)
-        return (!selected.length || selected.includes(article.id)) &&
+    const filtered = Object.keys(articles).filter(id => {
+        const published = Date.parse(articles[id].date)
+        return (!selected.length || selected.includes(id)) &&
             (!from || !to || (published > from && published < to))
     })
+
+    let res = {}
+    Object.keys(articles).map(id => {if(filtered.includes(id)) res = {...res, [id]: articles[id]}})
+
+    return res
 })
 
 export const commentSelectorFactory = () => createSelector(commentsGetter, idGetter, (comments, id) => {
