@@ -12,6 +12,7 @@ export default (articles = articlesMap, action) => {
         case DELETE_ARTICLE:
             return Object.keys(articles).filter(article => article.id !== payload.id)
         case ADD_COMMENT:
+            //обрати внимание, comments - обычный массив, значит ты мутируеш стейт
             articles[payload.articleID].comments.push(payload.id)
     }
 
