@@ -1,4 +1,4 @@
-import { INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT, LOAD_ALL_ARTICLES,
+import { INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, ADD_COMMENT, LOAD_COMMENTS, LOAD_ALL_ARTICLES,
     LOAD_ARTICLE, START, SUCCESS, FAIL} from '../constants'
 import $ from 'jquery'
 
@@ -61,6 +61,27 @@ export function loadArticle(id) {
                 .fail(error => dispatch({
                     type: LOAD_ARTICLE + FAIL,
                     payload: { id, error }
+                }))
+        }, 1000)
+    }
+}
+
+export function loadComments(articleId) {
+    return (dispatch, getState) => {
+        dispatch({
+            type: LOAD_COMMENTS + START,
+            payload: { articleId }
+        })
+
+        setTimeout(() => {
+            $.get(`/api/comment?article=${articleId}`)
+                .done(response => dispatch({
+                    type: LOAD_COMMENTS + SUCCESS,
+                    payload: { articleId, response }
+                }))
+                .fail(error => dispatch({
+                    type: LOAD_COMMENTS + FAIL,
+                    payload: { articleId, error }
                 }))
         }, 1000)
     }
