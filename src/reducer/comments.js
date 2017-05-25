@@ -23,6 +23,7 @@ export default (comments = new DefaultReducerState(), action) => {
 
         case LOAD_COMMENTS + SUCCESS:
             return comments
+                //каждый раз перезатираешь комменты, используй mergeIn
                 .setIn(['entities'], (arrayToMap(payload.response, CommentModel)))
     }
 
