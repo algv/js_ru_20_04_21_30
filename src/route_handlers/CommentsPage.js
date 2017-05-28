@@ -13,10 +13,10 @@ class CommentsPage extends Component {
         match: PropTypes.object.isRequired
     };
 
-    // componentDidMount() {
-    //     const {match, loadPageComments} = this.props
-    //     loadPageComments(match.params.page)
-    // }
+    componentDidMount() {
+        const {match, loadPageComments, comments} = this.props
+        if (!comments.length) loadPageComments(match.params.page)
+    }
 
     render() {
         const { match, comments } = this.props
@@ -31,7 +31,6 @@ class CommentsPage extends Component {
     getComments = ({ match }) => {
         const {comments, loadPageComments} = this.props
 
-        if (!comments.length) loadPageComments(match.params.page)
         return <div>{this.props.comments.map(id => <li key={id}>
             <div>
                 {id}
