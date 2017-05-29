@@ -39,7 +39,7 @@ class CommentsPage extends Component {
         </div>
     }
 }
-
+//советовал держать connect отдельно от route-handler, лучше тогда вообще не выноси в отдельную папку
 export default connect((state) => {
     return {
         comments: state.comments.entities
