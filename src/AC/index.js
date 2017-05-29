@@ -56,6 +56,7 @@ export function loadArticlesComments(articleId) {
 export function loadPageComments(page) {
     return {
         type: LOAD_PAGE_COMMENTS,
+        //page - 1
         callAPI: `/api/comment?limit=5&offset=${page*5}`,
         payload: { page }
     }
