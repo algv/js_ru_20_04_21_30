@@ -30,7 +30,7 @@ class CommentsPage extends Component {
 
     getComments = ({ match }) => {
         const {comments, loadPageComments} = this.props
-
+        //зачем id показывать? вообще не стоит по OrderedMap напрямую итерироваться
         return <div>{this.props.comments.map(id => <li key={id}>
             <div>
                 {id}
