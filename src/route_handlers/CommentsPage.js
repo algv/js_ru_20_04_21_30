@@ -15,6 +15,7 @@ class CommentsPage extends Component {
 
     componentDidMount() {
         const {match, loadPageComments, comments} = this.props
+        //а где у тебя привязка страницы к комментам?
         if (!comments.length) loadPageComments(match.params.page)
     }
 
