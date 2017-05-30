@@ -1,5 +1,5 @@
 import $ from 'jquery'
-import { INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, CHANGE_LANGUAGE, ADD_COMMENT, LOAD_ALL_ARTICLES,
+import { INCREMENT, DELETE_ARTICLE, CHANGE_DATE_RANGE, CHANGE_SELECTION, CHANGE_LOCALE, ADD_COMMENT, LOAD_ALL_ARTICLES,
     LOAD_ARTICLE, LOAD_ARTICLE_COMMENTS, LOAD_COMMENTS_FOR_PAGE, START, SUCCESS, FAIL } from '../constants'
 import {replace, push} from 'react-router-redux'
 
@@ -31,9 +31,9 @@ export function changeSelection(selected) {
     }
 }
 
-export function changeLanguage(locale) {
+export function changeLocale(locale) {
     return {
-        type: CHANGE_LANGUAGE,
+        type: CHANGE_LOCALE,
         payload: { locale }
     }
 }

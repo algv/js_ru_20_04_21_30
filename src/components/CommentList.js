@@ -23,7 +23,6 @@ class CommentList extends Component {
     }
 
     render() {
-        console.log('context: ', this.context)
         const {isOpen, toggleOpen} = this.props
         const linkText = isOpen ? localize("href.hideComments", this.context.locale) : localize("href.showComments", this.context.locale)
 
@@ -59,4 +58,5 @@ CommentList.propTypes = {
     article: PropTypes.object
 }
 
-export default connect(null, { loadArticlesComments })(toggleOpen(CommentList))
+export default connect(null, { loadArticlesComments }, null, {
+    pure: false})(toggleOpen(CommentList))

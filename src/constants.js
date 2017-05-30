@@ -15,6 +15,6 @@ export const SUCCESS = '_SUCCESS'
 export const FAIL = '_FAIL'
 export const START = '_START'
 
-export const CHANGE_LANGUAGE = 'CHANGE_LANGUAGE'
+export const CHANGE_LOCALE = 'CHANGE_LOCALE'
 export const RU = 'RU'
 export const EN = 'EN'

@@ -54,4 +54,5 @@ class CommentForm extends Component {
     }
 }
 
-export default connect(null, {addComment})(CommentForm)
+export default connect(null, {addComment}, null, {
+    pure: false})(CommentForm)
