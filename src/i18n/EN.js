@@ -15,5 +15,6 @@ export default {
 
   "button.submit": "submit",
 
-  "message.noComments": "no comments yet"
+  "message.noComments": "no comments yet",
+  "message.loading": "Loading..."
 }

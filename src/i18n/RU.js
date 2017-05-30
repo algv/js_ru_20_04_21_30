@@ -15,5 +15,6 @@ export default {
 
   "button.submit": "подтвердить",
 
-  "message.noComments": "нет комментариев"
+  "message.noComments": "нет комментариев",
+  "message.loading": "Загрузка..."
 }
