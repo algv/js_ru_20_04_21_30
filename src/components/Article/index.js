@@ -43,7 +43,10 @@ class Article extends Component {
     }
 
     checkAndLoad({article, id, loadArticle}) {
-        if (!article || (!article.text && !article.loading)) loadArticle(id)
+        if (!article
+            || ((typeof article.isRecord === "function" && article.isRecord())
+            && !article.text && !article.loading))
+                loadArticle(id)
     }
 
     render() {
