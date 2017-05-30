@@ -6,11 +6,16 @@ import PropTypes from 'prop-types'
 import Loader from './Loader'
 import {loadArticlesComments} from '../AC'
 import {connect} from 'react-redux'
+import {localize} from "../nls"
 
 class CommentList extends Component {
     static contextTypes = {
         router: PropTypes.object,
         store: PropTypes.object
+    }
+
+    static contextTypes = {
+        locale: PropTypes.string
     }
 
     componentWillReceiveProps({ article, isOpen, loadArticlesComments }) {
@@ -20,7 +25,7 @@ class CommentList extends Component {
     render() {
         console.log('context: ', this.context)
         const {isOpen, toggleOpen} = this.props
-        const linkText = isOpen ? 'hide comments' : 'show comments'
+        const linkText = isOpen ? localize("href.hideComments", this.context.locale) : localize("href.showComments", this.context.locale)
 
         return (
             <div>
@@ -36,7 +41,7 @@ class CommentList extends Component {
         if (loadingComments) return <Loader/>
         if (!loadedComments) return null
 
-        if (!comments.length) return <div><p>No comments yet</p><CommentForm articleId = {id}/></div>
+        if (!comments.length) return <div><p>{localize("message.noComments", this.context.locale)}</p><CommentForm articleId = {id}/></div>
         return (
             <div>
                 <ul>

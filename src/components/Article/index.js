@@ -6,6 +6,7 @@ import Loader from '../Loader'
 import './style.css'
 import {connect} from 'react-redux'
 import {deleteArticle, loadArticle} from '../../AC/index'
+import {localize} from "../../nls"
 
 class Article extends Component {
     static propTypes = {
@@ -21,6 +22,7 @@ class Article extends Component {
     }
 
     static contextTypes = {
+        locale: PropTypes.string,
         user: PropTypes.string
     }
 
@@ -57,8 +59,8 @@ class Article extends Component {
                 <h2 onClick={toggleOpen}>
                     {article.title}
                 </h2>
-                <h3>User: {this.context.user}</h3>
-                <a href = "#" onClick = {this.handleDelete}>delete me</a>
+                <h3>{`${localize("fields.user", this.context.locale)}:`} {this.context.user}</h3>
+                <a href = "#" onClick = {this.handleDelete}>{localize("href.delete", this.context.locale)}</a>
                 <CSSTransitionGroup
                     transitionName = "article"
                     transitionEnterTimeout = {500}

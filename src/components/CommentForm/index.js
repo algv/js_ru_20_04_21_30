@@ -2,12 +2,17 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {addComment} from  '../../AC'
+import {localize} from "../../nls"
 import './style.css'
 
 class CommentForm extends Component {
     static propTypes = {
 
     };
+
+    static contextTypes = {
+        locale: PropTypes.string
+    }
 
     state = {
         user: '',
@@ -17,13 +22,13 @@ class CommentForm extends Component {
     render() {
         return (
             <form onSubmit = {this.handleSubmit}>
-                user: <input value = {this.state.user}
+                {localize("fields.user", this.context.locale)} <input value = {this.state.user}
                              onChange = {this.handleChange('user')}
                              className = {this.getClassName('user')} />
-                comment: <input value = {this.state.text}
+                {localize("fields.comment", this.context.locale)} <input value = {this.state.text}
                                 onChange = {this.handleChange('text')}
                                 className = {this.getClassName('text')} />
-                <input type = "submit" value = "submit"/>
+                <input type = "submit" value = {localize("button.submit", this.context.locale)}/>
             </form>
         )
     }

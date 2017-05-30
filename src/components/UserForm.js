@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import {localize} from "../nls"
 
 class UserForm extends Component {
     static propTypes = {
@@ -7,14 +8,19 @@ class UserForm extends Component {
         value: PropTypes.string
     };
 
+    static contextTypes = {
+        locale: PropTypes.string
+    }
+
     state = {
         name: ''
     }
+    
 
     render() {
         return (
             <div>
-                Username: <input type = "text" value = {this.props.value} onChange = {this.handleChange}/>
+                {localize("fields.user", this.context.locale)} <input type = "text" value = {this.props.value} onChange = {this.handleChange}/>
             </div>
         )
     }

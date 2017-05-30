@@ -11,6 +11,8 @@ import {ConnectedRouter as Router} from 'react-router-redux'
 import history from '../history'
 import Menu from './Menu'
 import MenuItem from './Menu/MenuItem'
+import {localize} from "../nls"
+import {EN, RU} from '../constants'
 
 class App extends Component {
     static propTypes = {
@@ -21,6 +23,7 @@ class App extends Component {
     }
 
     static childContextTypes = {
+        locale: PropTypes.string,
         user: PropTypes.string
     }
 
@@ -38,16 +41,16 @@ class App extends Component {
                 <div>
                     <UserForm value = {this.state.username} onChange = {this.handleUserChange}/>
                     <Menu>
-                        <MenuItem path = '/counter'/>
-                        <MenuItem path = '/filters'/>
-                        <MenuItem path = '/articles'/>
+                        <MenuItem path = {`/${localize("components.counter", this.context.locale)}`}/>
+                        <MenuItem path = {`/${localize("components.filters", this.context.locale)}`}/>
+                        <MenuItem path = {`/${localize("components.articles", this.context.locale)}`}/>
                     </Menu>
 
                     <Switch>
-                        <Route path = '/counter' component = {Counter} exact />
-                        <Route path = '/filters' component = {Filters}/>
+                        <Route path = {`/${localize("components.counter", this.context.locale)}`} component = {Counter} exact />
+                        <Route path = {`/${localize("components.filters", this.context.locale)}`} component = {Filters}/>
                         <Route path = '/articles/new' render = {this.getNewArticleComponent}/>
-                        <Route path = '/articles' component = {ArticlesPage}/>
+                        <Route path = {`/${localize("components.articles", this.context.locale)}`} component = {ArticlesPage}/>
                         <Route path = '/comments' component = {CommentsPage} />
                         <Route path = '*' component = {NotFoundPage} />
                     </Switch>

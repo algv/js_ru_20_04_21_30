@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import ArticleList from '../components/ArticleList'
 import Article from '../components/Article'
 import {Route} from 'react-router-dom'
+import {localize} from "../nls"
 
 class ArticlesPage extends Component {
     static propTypes = {
@@ -11,6 +12,7 @@ class ArticlesPage extends Component {
     };
 
     static contextTypes = {
+        locale: PropTypes.string,
         user: PropTypes.string
     }
 
@@ -18,7 +20,7 @@ class ArticlesPage extends Component {
         const {match} = this.props
         return (
             <div>
-                <h2>USERNAME: {this.context.user}</h2>
+                <h2>{`${localize("fields.user", this.context.locale)}: `} {this.context.user}</h2>
                 <ArticleList match = {match} />
                 <Route path = {`${match.url}/:id`} render = {this.getArticle}/>
             </div>
