@@ -47,16 +47,16 @@ class App extends Component {
                     <LocaleSelect />
                     <UserForm value = {this.state.username} onChange = {this.handleUserChange}/>
                     <Menu>
-                        <MenuItem path = {`/${localize("components.counter", this.props.locale)}`}/>
-                        <MenuItem path = {`/${localize("components.filters", this.props.locale)}`}/>
-                        <MenuItem path = {`/${localize("components.articles", this.props.locale)}`}/>
+                        <MenuItem path = '/counter'/>
+                        <MenuItem path = '/filters'/>
+                        <MenuItem path = '/articles'/>
                     </Menu>
 
                     <Switch>
-                        <Route path = {`/${localize("components.counter", this.props.locale)}`} component = {Counter} exact />
-                        <Route path = {`/${localize("components.filters", this.props.locale)}`} component = {Filters}/>
+                        <Route path = '/counter' component = {Counter} exact />
+                        <Route path = '/filters' component = {Filters}/>
                         <Route path = '/articles/new' render = {this.getNewArticleComponent}/>
-                        <Route path = {`/${localize("components.articles", this.props.locale)}`} component = {ArticlesPage}/>
+                        <Route path = '/articles' component = {ArticlesPage}/>
                         <Route path = '/comments' component = {CommentsPage} />
                         <Route path = '*' component = {NotFoundPage} />
                     </Switch>
