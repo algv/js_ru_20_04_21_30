@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+//достаточно сильно усложняешь себе жизнь, мог бы тогда просто функцию в контекст поместить
 import {localize} from "../../nls"
 
 class Menu extends Component {
@@ -7,6 +8,7 @@ class Menu extends Component {
 
     };
 
+    //лучше воспользуйся декоратором или отдельным компонентом
     static contextTypes = {
         locale: PropTypes.string
     }
